@@ -9,7 +9,7 @@ const expenseList = document.querySelector("ul")
 const expensesQuantity = document.querySelector("aside header p span")
 const expensesTotal = document.querySelector("aside header h2")
 
-//capture input event to format value
+//capture input event to format valueatualiza o totalremove
 amount.oninput = () => {
     let value = amount.value.replace(/\D/g, "")
 
@@ -152,3 +152,16 @@ function updateTotals() {
         // console.log(error)
     }
 }
+
+//capture click on list items
+expenseList.addEventListener("click", function(event){
+    //check if it is the icon (X)
+    if(event.target.classList.contains("remove-icon")){
+        //get the (li) element
+        const item = event.target.closest(".expense")
+        //remove the item
+        item.remove()
+    }
+    //update the total
+    updateTotals()
+})
